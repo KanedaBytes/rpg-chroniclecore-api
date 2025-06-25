@@ -1,20 +1,20 @@
 {
-  "openapi": "3.0.0",
+  "openapi": "3.1.0",
   "info": {
-    "title": "ChronicleCore Actions API",
+    "title": "ChronicleCore GPT API",
     "version": "1.0.0",
-    "description": "API for player, NPC, and event management in RPG campaigns using Supabase"
+    "description": "OpenAPI schema for RPG Game Master V3 — Supabase integration for ChronicleCore (players, NPCs, events)"
   },
   "servers": [
     {
-      "url": "https://fxiggeohozwjfadxvekb.supabase.co/rest/v1"
+      "url": "https://fx1gzeohozwjfadxvekb.supabase.co/rest/v1"
     }
   ],
   "paths": {
     "/players": {
       "post": {
-        "summary": "Create a new player character",
         "operationId": "createPlayer",
+        "summary": "Create a new player character",
         "requestBody": {
           "required": true,
           "content": {
@@ -22,57 +22,38 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "race": {
-                    "type": "string"
-                  },
-                  "class": {
-                    "type": "string"
-                  },
-                  "level": {
-                    "type": "integer"
-                  },
-                  "background": {
-                    "type": "string"
-                  },
-                  "hp_current": {
-                    "type": "integer"
-                  },
-                  "xp_total": {
-                    "type": "integer"
-                  },
-                  "inventory": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "spell_slots": {
-                    "type": "object"
+                  "name": { "type": "string" },
+                  "race": { "type": "string" },
+                  "class": { "type": "string" },
+                  "stats": {
+                    "type": "object",
+                    "properties": {
+                      "str": { "type": "integer" },
+                      "dex": { "type": "integer" },
+                      "con": { "type": "integer" },
+                      "int": { "type": "integer" },
+                      "wis": { "type": "integer" },
+                      "cha": { "type": "integer" }
+                    },
+                    "required": ["str", "dex", "con", "int", "wis", "cha"]
                   }
                 },
-                "required": [
-                  "name",
-                  "race",
-                  "class"
-                ]
+                "required": ["name", "race", "class", "stats"]
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Player created successfully"
+            "description": "Player created"
           }
         }
       }
     },
     "/npcs": {
       "post": {
-        "summary": "Create a new NPC",
         "operationId": "createNPC",
+        "summary": "Create an NPC",
         "requestBody": {
           "required": true,
           "content": {
@@ -80,43 +61,26 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "faction": {
-                    "type": "string"
-                  },
-                  "location_last_seen": {
-                    "type": "string"
-                  },
-                  "status": {
-                    "type": "string"
-                  },
-                  "relation_to_players": {
-                    "type": "object"
-                  },
-                  "notes": {
-                    "type": "string"
-                  }
+                  "name": { "type": "string" },
+                  "faction": { "type": "string" },
+                  "role": { "type": "string" }
                 },
-                "required": [
-                  "name"
-                ]
+                "required": ["name", "faction", "role"]
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "NPC created successfully"
+            "description": "NPC created"
           }
         }
       }
     },
     "/events": {
       "post": {
-        "summary": "Log a world event",
         "operationId": "logEvent",
+        "summary": "Log a world event",
         "requestBody": {
           "required": true,
           "content": {
@@ -124,34 +88,18 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "type": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "location": {
-                    "type": "string"
-                  },
-                  "npc_involved": {
-                    "type": "string"
-                  },
-                  "created_by": {
-                    "type": "string"
-                  }
+                  "title": { "type": "string" },
+                  "description": { "type": "string" },
+                  "date": { "type": "string", "format": "date" }
                 },
-                "required": [
-                  "type",
-                  "description",
-                  "location"
-                ]
+                "required": ["title", "description", "date"]
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Event logged successfully"
+            "description": "Event logged"
           }
         }
       }
@@ -161,21 +109,14 @@
     "securitySchemes": {
       "api_key": {
         "type": "apiKey",
-        "name": "apikey",
-        "in": "header"
-      },
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+        "in": "header",
+        "name": "apikey"
       }
     }
   },
   "security": [
     {
       "api_key": []
-    },
-    {
-      "bearerAuth": []
     }
   ]
 }
