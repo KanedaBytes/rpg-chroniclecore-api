@@ -1,0 +1,1 @@
+-- Optional: define your Supabase RLS or access rules here.

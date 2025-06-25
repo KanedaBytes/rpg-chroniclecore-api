@@ -1,0 +1,1 @@
+This directory contains the OpenAPI schema used to define GPT actions.

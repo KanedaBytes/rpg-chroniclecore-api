@@ -1,0 +1,181 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ChronicleCore Actions API",
+    "version": "1.0.0",
+    "description": "API for player, NPC, and event management in RPG campaigns using Supabase"
+  },
+  "servers": [
+    {
+      "url": "https://fxiggeohozwjfadxvekb.supabase.co/rest/v1"
+    }
+  ],
+  "paths": {
+    "/players": {
+      "post": {
+        "summary": "Create a new player character",
+        "operationId": "createPlayer",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "race": {
+                    "type": "string"
+                  },
+                  "class": {
+                    "type": "string"
+                  },
+                  "level": {
+                    "type": "integer"
+                  },
+                  "background": {
+                    "type": "string"
+                  },
+                  "hp_current": {
+                    "type": "integer"
+                  },
+                  "xp_total": {
+                    "type": "integer"
+                  },
+                  "inventory": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "spell_slots": {
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "name",
+                  "race",
+                  "class"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Player created successfully"
+          }
+        }
+      }
+    },
+    "/npcs": {
+      "post": {
+        "summary": "Create a new NPC",
+        "operationId": "createNPC",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "faction": {
+                    "type": "string"
+                  },
+                  "location_last_seen": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "relation_to_players": {
+                    "type": "object"
+                  },
+                  "notes": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "NPC created successfully"
+          }
+        }
+      }
+    },
+    "/events": {
+      "post": {
+        "summary": "Log a world event",
+        "operationId": "logEvent",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "location": {
+                    "type": "string"
+                  },
+                  "npc_involved": {
+                    "type": "string"
+                  },
+                  "created_by": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "description",
+                  "location"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Event logged successfully"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "apikey",
+        "in": "header"
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "api_key": []
+    },
+    {
+      "bearerAuth": []
+    }
+  ]
+}

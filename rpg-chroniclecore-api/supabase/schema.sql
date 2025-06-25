@@ -1,0 +1,1 @@
+-- Optional: define your Supabase tables here.

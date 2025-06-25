@@ -1,0 +1,169 @@
+{
+  "info": {
+    "_postman_id": "00670dff-f7be-4e94-b39d-12943be9fdf4",
+    "name": "ChronicleCore Starter API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "chroniclecore"
+  },
+  "item": [
+    {
+      "name": "Create Player",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4aWdnZW9ob3p3amZhZHh2ZWtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NzU4NTAsImV4cCI6MjA2NjQ1MTg1MH0.2wsykRm55dPxLsmGP--EW1fO38J8zzmuOntD165nq00"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4aWdnZW9ob3p3amZhZHh2ZWtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NzU4NTAsImV4cCI6MjA2NjQ1MTg1MH0.2wsykRm55dPxLsmGP--EW1fO38J8zzmuOntD165nq00"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Thalor\",\n  \"race\": \"Elf\",\n  \"class\": \"Ranger\",\n  \"level\": 3,\n  \"background\": \"Outlander\",\n  \"hp_current\": 27,\n  \"xp_total\": 900,\n  \"inventory\": [\n    \"shortbow\",\n    \"leather armor\"\n  ],\n  \"spell_slots\": {\n    \"1\": 2\n  }\n}"
+        },
+        "url": {
+          "raw": "https://fxiggeohozwjfadxvekb.supabase.co/rest/v1/players",
+          "host": [
+            "https://fxiggeohozwjfadxvekb.supabase.co"
+          ],
+          "path": [
+            "rest",
+            "v1",
+            "players"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Players",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4aWdnZW9ob3p3amZhZHh2ZWtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NzU4NTAsImV4cCI6MjA2NjQ1MTg1MH0.2wsykRm55dPxLsmGP--EW1fO38J8zzmuOntD165nq00"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4aWdnZW9ob3p3amZhZHh2ZWtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NzU4NTAsImV4cCI6MjA2NjQ1MTg1MH0.2wsykRm55dPxLsmGP--EW1fO38J8zzmuOntD165nq00"
+          }
+        ],
+        "url": {
+          "raw": "https://fxiggeohozwjfadxvekb.supabase.co/rest/v1/players",
+          "host": [
+            "https://fxiggeohozwjfadxvekb.supabase.co"
+          ],
+          "path": [
+            "rest",
+            "v1",
+            "players"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create NPC",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4aWdnZW9ob3p3amZhZHh2ZWtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NzU4NTAsImV4cCI6MjA2NjQ1MTg1MH0.2wsykRm55dPxLsmGP--EW1fO38J8zzmuOntD165nq00"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4aWdnZW9ob3p3amZhZHh2ZWtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NzU4NTAsImV4cCI6MjA2NjQ1MTg1MH0.2wsykRm55dPxLsmGP--EW1fO38J8zzmuOntD165nq00"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Vendra\",\n  \"faction\": \"Crimson Order\",\n  \"location_last_seen\": \"Daggerbay\",\n  \"status\": \"Alive\",\n  \"relation_to_players\": {\n    \"Thalor\": \"Hostile\"\n  },\n  \"notes\": \"Seen fleeing into the forest\"\n}"
+        },
+        "url": {
+          "raw": "https://fxiggeohozwjfadxvekb.supabase.co/rest/v1/npcs",
+          "host": [
+            "https://fxiggeohozwjfadxvekb.supabase.co"
+          ],
+          "path": [
+            "rest",
+            "v1",
+            "npcs"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Log World Event",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4aWdnZW9ob3p3amZhZHh2ZWtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NzU4NTAsImV4cCI6MjA2NjQ1MTg1MH0.2wsykRm55dPxLsmGP--EW1fO38J8zzmuOntD165nq00"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4aWdnZW9ob3p3amZhZHh2ZWtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NzU4NTAsImV4cCI6MjA2NjQ1MTg1MH0.2wsykRm55dPxLsmGP--EW1fO38J8zzmuOntD165nq00"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"combat\",\n  \"description\": \"Thalor defeated a goblin raiding party\",\n  \"location\": \"Forest of Mourn\",\n  \"npc_involved\": null,\n  \"created_by\": null\n}"
+        },
+        "url": {
+          "raw": "https://fxiggeohozwjfadxvekb.supabase.co/rest/v1/events",
+          "host": [
+            "https://fxiggeohozwjfadxvekb.supabase.co"
+          ],
+          "path": [
+            "rest",
+            "v1",
+            "events"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Events",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4aWdnZW9ob3p3amZhZHh2ZWtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NzU4NTAsImV4cCI6MjA2NjQ1MTg1MH0.2wsykRm55dPxLsmGP--EW1fO38J8zzmuOntD165nq00"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4aWdnZW9ob3p3amZhZHh2ZWtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NzU4NTAsImV4cCI6MjA2NjQ1MTg1MH0.2wsykRm55dPxLsmGP--EW1fO38J8zzmuOntD165nq00"
+          }
+        ],
+        "url": {
+          "raw": "https://fxiggeohozwjfadxvekb.supabase.co/rest/v1/events",
+          "host": [
+            "https://fxiggeohozwjfadxvekb.supabase.co"
+          ],
+          "path": [
+            "rest",
+            "v1",
+            "events"
+          ]
+        }
+      }
+    }
+  ]
+}

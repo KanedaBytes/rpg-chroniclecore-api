@@ -1,0 +1,1 @@
+This directory contains the Postman collection for testing ChronicleCore API endpoints.
