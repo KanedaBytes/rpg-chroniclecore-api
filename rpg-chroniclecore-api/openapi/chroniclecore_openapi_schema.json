@@ -48,17 +48,17 @@
       }
     },
     "/players/{id}": {
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "schema": { "type": "string" }
-        }
-      ],
       "get": {
         "operationId": "getPlayerById",
         "summary": "Retrieve a player by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Player data",
@@ -73,6 +73,14 @@
       "put": {
         "operationId": "updatePlayer",
         "summary": "Update a player character",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -88,6 +96,14 @@
       "delete": {
         "operationId": "deletePlayer",
         "summary": "Delete a player character",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
         "responses": {
           "204": { "description": "Player deleted" }
         }
