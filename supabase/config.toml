@@ -1,0 +1,8 @@
+# supabase/config.toml
+
+# ← your project ID (set by `supabase link`)
+project_id = "fxiggeohozwjfadxvekb"
+
+# Now tell Supabase to skip JWT for this function:
+[functions."plugin-router"]
+verify_jwt = false
