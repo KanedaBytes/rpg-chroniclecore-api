@@ -188,10 +188,9 @@
         "type": "object",
         "properties": {
           "id": {
-  "type": "string",
-  "readOnly": true
-}
-
+            "type": "string",
+            "readOnly": true
+          },
           "name": { "type": "string" },
           "race": { "type": "string" },
           "class": { "type": "string" },
