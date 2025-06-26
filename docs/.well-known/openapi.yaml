@@ -156,3 +156,13 @@ components:
           type: string
           format: date
       required: [title, description, date]
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
+
