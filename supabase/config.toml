@@ -1,8 +1,10 @@
+# supabase/config.toml
+
 project_id = "fxiggeohozwjfadxvekb"
 
 [functions."plugin-router"]
 verify_jwt  = false
 static_files = [
-  "functions/plugin-router/ai-plugin.json",
-  "functions/plugin-router/openapi.yaml",
+  "supabase/functions/plugin-router/ai-plugin.json",
+  "supabase/functions/plugin-router/openapi.yaml",
 ]
