@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "ChronicleCore GPT API",
+  "name_for_model": "chroniclecore_gpt_api",
+  "description_for_human": "Manage D&D characters, NPCs, and events via Supabase.",
+  "description_for_model": "Plugin for accessing ChronicleCore's Supabase tables for players, NPCs, and world events.",
+  "auth": {
+    "type": "service_http",
+    "authorization_type": "bearer"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://fxiggeohozwjfadxvekb.functions.supabase.co/plugin-router/.well-known/openapi.yaml",
+    "is_user_authenticated": true
+  }
+}
