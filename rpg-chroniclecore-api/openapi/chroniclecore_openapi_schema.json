@@ -20,7 +20,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Player"
+                "$ref": "#/components/schemas/PlayerInput"
               }
             }
           }
@@ -96,7 +96,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Player"
+                "$ref": "#/components/schemas/PlayerInput"
               }
             }
           }
@@ -191,6 +191,27 @@
             "type": "string",
             "readOnly": true
           },
+          "name": { "type": "string" },
+          "race": { "type": "string" },
+          "class": { "type": "string" },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "str": { "type": "integer" },
+              "dex": { "type": "integer" },
+              "con": { "type": "integer" },
+              "int": { "type": "integer" },
+              "wis": { "type": "integer" },
+              "cha": { "type": "integer" }
+            },
+            "required": ["str", "dex", "con", "int", "wis", "cha"]
+          }
+        },
+        "required": ["name", "race", "class", "stats"]
+      },
+      "PlayerInput": {
+        "type": "object",
+        "properties": {
           "name": { "type": "string" },
           "race": { "type": "string" },
           "class": { "type": "string" },
