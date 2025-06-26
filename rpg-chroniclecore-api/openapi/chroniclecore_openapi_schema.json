@@ -26,9 +26,7 @@
           }
         },
         "responses": {
-          "201": {
-            "description": "Player created"
-          }
+          "201": { "description": "Player created" }
         }
       },
       "get": {
@@ -41,9 +39,7 @@
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Player"
-                  }
+                  "items": { "$ref": "#/components/schemas/Player" }
                 }
               }
             }
@@ -52,27 +48,23 @@
       }
     },
     "/players/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "string" }
+        }
+      ],
       "get": {
         "operationId": "getPlayerById",
         "summary": "Retrieve a player by ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Player data",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Player"
-                }
+                "schema": { "$ref": "#/components/schemas/Player" }
               }
             }
           }
@@ -81,49 +73,23 @@
       "put": {
         "operationId": "updatePlayer",
         "summary": "Update a player character",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PlayerInput"
-              }
+              "schema": { "$ref": "#/components/schemas/PlayerInput" }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "Player updated"
-          }
+          "200": { "description": "Player updated" }
         }
       },
       "delete": {
         "operationId": "deletePlayer",
         "summary": "Delete a player character",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
-          "204": {
-            "description": "Player deleted"
-          }
+          "204": { "description": "Player deleted" }
         }
       }
     },
@@ -148,9 +114,7 @@
           }
         },
         "responses": {
-          "201": {
-            "description": "NPC created"
-          }
+          "201": { "description": "NPC created" }
         }
       }
     },
@@ -175,9 +139,7 @@
           }
         },
         "responses": {
-          "201": {
-            "description": "Event logged"
-          }
+          "201": { "description": "Event logged" }
         }
       }
     }
@@ -187,10 +149,7 @@
       "Player": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "readOnly": true
-          },
+          "id": { "type": "string", "readOnly": true },
           "name": { "type": "string" },
           "race": { "type": "string" },
           "class": { "type": "string" },
@@ -240,8 +199,6 @@
     }
   },
   "security": [
-    {
-      "api_key": []
-    }
+    { "api_key": [] }
   ]
 }
