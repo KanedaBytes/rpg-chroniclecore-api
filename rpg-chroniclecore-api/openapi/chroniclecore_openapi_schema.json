@@ -181,6 +181,20 @@
           "name": { "type": "string" },
           "race": { "type": "string" },
           "class": { "type": "string" },
+          "level": { "type": "integer", "default": 1 },
+          "background": { "type": "string" },
+          "hp_current": { "type": "integer", "default": 0 },
+          "xp_total": { "type": "integer", "default": 0 },
+          "inventory": {
+            "type": "array",
+            "items": { "type": "string" },
+            "default": []
+          },
+          "spell_slots": {
+            "type": "object",
+            "additionalProperties": { "type": "integer" },
+            "default": {}
+          },
           "stats": {
             "type": "object",
             "properties": {
@@ -203,6 +217,18 @@
           "name": { "type": "string" },
           "race": { "type": "string" },
           "class": { "type": "string" },
+          "level": { "type": "integer" },
+          "background": { "type": "string" },
+          "hp_current": { "type": "integer" },
+          "xp_total": { "type": "integer" },
+          "inventory": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "spell_slots": {
+            "type": "object",
+            "additionalProperties": { "type": "integer" }
+          },
           "stats": {
             "type": "object",
             "properties": {
