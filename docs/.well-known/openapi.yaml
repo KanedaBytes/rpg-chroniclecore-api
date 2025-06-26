@@ -1,0 +1,158 @@
+openapi: 3.1.0
+info:
+  title: ChronicleCore GPT API
+  version: 1.0.0
+  description: OpenAPI schema for RPG Game Master V3 — Supabase integration for ChronicleCore (players, NPCs, events)
+servers:
+  - url: https://fx1gzeohozwjfadxvekb.supabase.co/rest/v1
+paths:
+  /players:
+    get:
+      operationId: getPlayers
+      summary: Retrieve all player characters
+      responses:
+        '200':
+          description: List of players
+    post:
+      operationId: createPlayer
+      summary: Create a new player character
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlayerInput'
+      responses:
+        '201':
+          description: Player created
+  /players/{id}:
+    get:
+      operationId: getPlayerById
+      summary: Retrieve a player by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Player data
+    put:
+      operationId: updatePlayer
+      summary: Update a player character
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlayerInput'
+      responses:
+        '200':
+          description: Player updated
+    delete:
+      operationId: deletePlayer
+      summary: Delete a player character
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Player deleted
+  /npcs:
+    post:
+      operationId: createNPC
+      summary: Create an NPC
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NPCInput'
+      responses:
+        '201':
+          description: NPC created
+  /events:
+    post:
+      operationId: logEvent
+      summary: Log a world event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventInput'
+      responses:
+        '201':
+          description: Event logged
+components:
+  schemas:
+    PlayerInput:
+      type: object
+      properties:
+        name:
+          type: string
+        race:
+          type: string
+        class:
+          type: string
+        level:
+          type: integer
+          default: 1
+        background:
+          type: string
+        hp_current:
+          type: integer
+          default: 0
+        xp_total:
+          type: integer
+          default: 0
+        inventory:
+          type: array
+          items:
+            type: string
+          default: []
+        spell_slots:
+          type: object
+          additionalProperties:
+            type: integer
+          default: {}
+        stats:
+          type: object
+          properties:
+            str: { type: integer }
+            dex: { type: integer }
+            con: { type: integer }
+            int: { type: integer }
+            wis: { type: integer }
+            cha: { type: integer }
+          required: [str, dex, con, int, wis, cha]
+      required: [name, race, class, stats]
+    NPCInput:
+      type: object
+      properties:
+        name: { type: string }
+        faction: { type: string }
+        role: { type: string }
+      required: [name, faction, role]
+    EventInput:
+      type: object
+      properties:
+        title: { type: string }
+        description: { type: string }
+        date:
+          type: string
+          format: date
+      required: [title, description, date]
