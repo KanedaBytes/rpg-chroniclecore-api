@@ -20,25 +20,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "name": { "type": "string" },
-                  "race": { "type": "string" },
-                  "class": { "type": "string" },
-                  "stats": {
-                    "type": "object",
-                    "properties": {
-                      "str": { "type": "integer" },
-                      "dex": { "type": "integer" },
-                      "con": { "type": "integer" },
-                      "int": { "type": "integer" },
-                      "wis": { "type": "integer" },
-                      "cha": { "type": "integer" }
-                    },
-                    "required": ["str", "dex", "con", "int", "wis", "cha"]
-                  }
-                },
-                "required": ["name", "race", "class", "stats"]
+                "$ref": "#/components/schemas/Player"
               }
             }
           }
@@ -46,6 +28,101 @@
         "responses": {
           "201": {
             "description": "Player created"
+          }
+        }
+      },
+      "get": {
+        "operationId": "getPlayers",
+        "summary": "Retrieve all player characters",
+        "responses": {
+          "200": {
+            "description": "List of players",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Player"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/players/{id}": {
+      "get": {
+        "operationId": "getPlayerById",
+        "summary": "Retrieve a player by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Player data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Player"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updatePlayer",
+        "summary": "Update a player character",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Player"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Player updated"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deletePlayer",
+        "summary": "Delete a player character",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Player deleted"
           }
         }
       }
@@ -105,17 +182,39 @@
       }
     }
   },
-"components": {
-  "schemas": {},
-  "securitySchemes": {
-    "api_key": {
-      "type": "apiKey",
-      "in": "header",
-      "name": "apikey"
+  "components": {
+    "schemas": {
+      "Player": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "race": { "type": "string" },
+          "class": { "type": "string" },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "str": { "type": "integer" },
+              "dex": { "type": "integer" },
+              "con": { "type": "integer" },
+              "int": { "type": "integer" },
+              "wis": { "type": "integer" },
+              "cha": { "type": "integer" }
+            },
+            "required": ["str", "dex", "con", "int", "wis", "cha"]
+          }
+        },
+        "required": ["name", "race", "class", "stats"]
+      }
+    },
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "apikey"
+      }
     }
-  }
-}
-,
+  },
   "security": [
     {
       "api_key": []
