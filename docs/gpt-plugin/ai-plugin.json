@@ -10,7 +10,7 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://kanedabytes.github.io/rpg-chroniclecore-api/gpt-plugin/openapi.yml",
+    "url": "https://kanedabytes.github.io/rpg-chroniclecore-api/gpt-plugin/openapi.yaml",
     "is_user_authenticated": true
   }
 }
